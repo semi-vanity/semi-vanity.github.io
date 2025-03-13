@@ -1,0 +1,134 @@
+/* Background with GIF */
+body {
+    background: url('https://64.media.tumblr.com/14fc38f14316cc3789e27a81967da5ad/tumblr_p475p2b1461vbdodoo1_500.gif') 
+                center/cover no-repeat fixed;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.container {
+    position: relative;
+    width: 200px;
+    height: 150px;
+}
+
+/* Pixelated Envelope */
+.envelope {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    background-color: #08519c;
+    cursor: pointer;
+    image-rendering: pixelated;  /* Ensures a retro pixelated look */
+    border: 4px solid #04294e;
+    box-shadow: 4px 4px 0 #04294e;
+    animation: bounce 3s infinite;
+}
+
+/* Triangular Envelope Flap with Darker Color */
+.flap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 60px solid #04294e; /* Darker blue flap */
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Message Paper */
+.message-container {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 220px;
+    height: 200px;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 4px 4px 0 #04294e;
+    text-align: center;
+    border-radius: 5px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Apply pixel font to message */
+.message h2, .message p {
+    font-family: 'Press Start 2P', cursive;  /* Pixelated font */
+    color: #08306b;
+    font-size: 9px;
+    text-align: center;
+    text-shadow: 2px 2px #ccc;
+    line-height: 1.5;
+}
+
+/* Envelope Bounce Animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.confetti {
+    position: absolute;
+    opacity: 1;
+    transition: transform 2s ease-out, opacity 2s ease-out;
+    pointer-events: none; /* Prevents interference */
+}
+
+.spotify-section {
+    text-align: center;
+    margin-top: 100px; /* Increases space between envelope and icon */
+}
+
+.spotify-link img {
+    width: 100px; /* Adjusts icon size */
+    height: 100px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.spotify-link:hover img {
+    transform: scale(1.1);
+}
+
+.open-me-text {
+    font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+    color: #08306b; /* Matches your theme */
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    top: -40px; /* Moves it above the envelope */
+    left: 50%;
+    transform: translateX(-50%);
+    animation: wobble 1.5s infinite ease-in-out;
+    z-index: 10; /* Keeps it on top */
+}
+
+/* 🕺 Wobble Animation */
+@keyframes wobble {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-5deg); }
+    50% { transform: translateX(-50%) rotate(5deg); }
+    75% { transform: translateX(-50%) rotate(-5deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+.gif-container {
+    position: absolute;
+    top: -250px; /* Moves it higher above "Open Me!" */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 170px; /* Adjust size */
+    height: auto;
+}
+
+.gif-container img {
+    width: 100%; /* Keeps the GIF responsive */
+}
